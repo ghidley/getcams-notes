@@ -9,18 +9,18 @@ Need routing to access # 172.16.0.0/16         HPWREN-local private network
 
 Need /etc/hosts file with camera base names  and IP addresses
 
-Need user and group hpwren:
+    Need user and group hpwren:
 	ghidley@c1 ~$ grep hpwren /etc/passwd /etc/group*
 	/etc/passwd:hpwren:x:30001:30001:HPWREN role account:/home/hpwren:/bin/bash
 	/etc/group:hpwren:x:30001:hwb,ghidley,geoff,davis,jmeyer,lirichards,abrust
 
-Need the following software packages:
+    Need the following software packages:
 	perl (with , Log::Log4perl and File::Copy qw(copy) libs)
 	python, python-swiftclient
 	swift, s3cmd
 	ppmlabel, ppmarith, convert, pnmscale (from ImageMagick/netpbm ports)
 
-Storage areas used by getcams system:
+    Storage areas used by getcams system:
 	ARCHDIR=/Data/archive   (for long term archival)
 	CDIR=$(ARCHDIR)/incoming/cameras   (for last fetched images)
 	DATADIR=/Data
@@ -57,6 +57,7 @@ getcams system consists of the following executables and control files:
 
 
 (from run_cameras):
+```
  Will be managed by systemctl start/stop/restart when in production mode:
        Start=/home/hpwren/bin/run_cameras -I
        ExecStop=/home/hpwren/bin/run_cameras -X
@@ -98,7 +99,7 @@ getcams system consists of the following executables and control files:
      [Re-]exec camera fetch
    done while read cam_params
  done
-
+```
  Above while loops also manage special case cam keywords of HALT and KILLALL
 
 
